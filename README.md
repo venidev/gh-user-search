@@ -1,7 +1,7 @@
 ![image](https://user-images.githubusercontent.com/3338795/141331645-22fd25be-0185-44e4-9373-323763e13586.png)
 
 
-# Github Search Tool
+# Github Search Tool ( Work in Progress )
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
