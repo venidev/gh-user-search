@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment, Component } from "react";
+import GitHubLogin from 'react-github-login';
 import "./App.css";
 import SearchBox from "./components/search/searchbox";
 import CardList from "./components/card-list/card-list";
@@ -27,7 +28,6 @@ class App extends Component {
   };
 
 
-
   //This Function does the first level Github Search
   async makeTopLevelSearch  (userName, page)  {
 
@@ -48,7 +48,7 @@ class App extends Component {
 
 
     await fetch(url, {headers:{
-      'Authorization': ptok,
+      'Authorization': 'token '+ ptok,
     }}).then((res) => res.json())
       .then((data) => {
         let ids = data.items.map(item => item.login)
@@ -71,6 +71,9 @@ class App extends Component {
   };
 
 
+  //Helper function to delay the search
+  //Incase of Rate Limit use this 
+  //https://developer.github.com/v3/#rate-limiting
   delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
   }
@@ -83,17 +86,10 @@ class App extends Component {
     let ptok2= 'NYiMXvOBSWk4EwLtn3Z6j7M';
     ptok = `${ptok}_kkngSBJjBIOIe${ptok2}`;
   
-    let currentPage = this.state.currentPage;
-
     for(let name of names) {
-      if(currentPage ===1) {
-        await this.delay(10);
-      }else {
-        await this.delay(700);
-      }
       
       let job = fetch(`https://api.github.com/users/${name}`,{headers:{
-        'Authorization': ptok,
+        'Authorization': 'token '+ ptok, 
       }}).then(
         successResponse => {
           if (successResponse.status != 200) {
@@ -123,6 +119,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
+
         <h1 style={{paddingLeft: '40%'}}> GitHub User Search </h1>
         <SearchBox onInputChange={this.onInputChange} />
         <div style={{paddingLeft: '30%', paddingRight:'30%'}}>
@@ -141,12 +138,11 @@ class App extends Component {
             <CardList userData={this.state.userData.items} />
         ) : (
           <div>
-            <h2 style={{marginLeft:'45%'}}>No Results Found</h2>
+            
              <br />
           </div>
         )}
         </div>
-
 
       </Fragment>
     );
