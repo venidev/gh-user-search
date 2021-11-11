@@ -1,6 +1,8 @@
 ## Github Search Tool ( Work in Progress )
-Features available: Top level search
-Features in Progrsss: Full Detail for User Profile, Pagination
+1)  Features available: Top level search
+2) Features in Progrsss: 
+- Full Detail for User Profile
+- Pagination
 
 ![image](https://user-images.githubusercontent.com/3338795/141331645-22fd25be-0185-44e4-9373-323763e13586.png)
 
