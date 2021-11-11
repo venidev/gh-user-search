@@ -19,11 +19,22 @@ const Card = ({ userProfile }) => {
           </a>
         </div>
         <div>Real Name: {userProfile.name}</div>
-        <div>Email: {userProfile.Email}</div>
+        <div>Email: {userProfile.email}</div>
         <div>Location:{userProfile.location}</div>
-        <div>Count of Public repos:</div>
-        <div>Account Created :</div>
-        <div>Account Last Updated :</div>
+        <div>Count of Public repos: {userProfile.public_repos}</div>
+        
+
+        <div>Account Created : {new Intl.DateTimeFormat('en-US', { 
+                month: 'long', 
+                day: '2-digit',
+                year: 'numeric', 
+            }).format(new Date(userProfile.created_at))}</div>
+
+        <div>Account Last Updated : {new Intl.DateTimeFormat('en-US', { 
+                month: 'long', 
+                day: '2-digit',
+                year: 'numeric', 
+            }).format(new Date(userProfile.updated_at))}</div>
       </ProfileContent>
     </CardContainer>
   );

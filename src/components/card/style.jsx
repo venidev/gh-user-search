@@ -12,7 +12,7 @@ export const CardContainer= styled.div`
   border-color: #e6e6e6;
   border-width: 1px;
   border-radius: 4px;
-  max-width: 300px;
+  max-width: 400px;
 `;
 
 

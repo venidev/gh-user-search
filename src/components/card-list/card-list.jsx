@@ -4,6 +4,9 @@ import { Clist } from "./style";
 
 const CardList = (userProfiles) => {
   let userDataArray = Object.values(userProfiles.userData);
+ console.log(userDataArray);
+
+
   if(userDataArray !=null && userDataArray.length > 0){
     return (
       <Clist>
