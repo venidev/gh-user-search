@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment, Component } from "react";
-import GitHubLogin from 'react-github-login';
 import "./App.css";
 import SearchBox from "./components/search/searchbox";
 import CardList from "./components/card-list/card-list";
@@ -92,6 +91,7 @@ class App extends Component {
         'Authorization': 'token '+ ptok, 
       }}).then(
         successResponse => {
+          // eslint-disable-next-line eqeqeq
           if (successResponse.status != 200) {
             return null;
           } else {
