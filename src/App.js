@@ -55,7 +55,7 @@ class App extends Component {
         let total_count = data.total_count;
         
         if(total_count > 5) {
-          this.setState({total_count: total_count, currentPage: page+1}, () => {console.log("Updated Page  "+(page+1))});
+          this.setState({total_count: total_count, currentPage: page}, () => {console.log("Updated Page  "+page)});
         }
         if(ids.length > 5){
           ids = ids.slice(0,5);
@@ -78,14 +78,19 @@ class App extends Component {
   //Async job to fetch users in the current page
   async getUsers(names) {
 
-    
     let jobs = [];
     let ptok = 'ghp';
     let ptok2= 'NYiMXvOBSWk4EwLtn3Z6j7M';
     ptok = `${ptok}_kkngSBJjBIOIe${ptok2}`;
   
+    let currentPage = this.state.currentPage;
+
     for(let name of names) {
-      await this.delay(1000);
+      if(currentPage ===1) {
+        await this.delay(10);
+      }else {
+        await this.delay(700);
+      }
       
       let job = fetch(`https://api.github.com/users/${name}`,{headers:{
         'Authorization': ptok,
@@ -122,19 +127,16 @@ class App extends Component {
         <SearchBox onInputChange={this.onInputChange} />
         <div style={{paddingLeft: '30%', paddingRight:'30%'}}>
           <p style={{textAlign: "left"}}>
-          {this.state.currentPage > 1 ? (
-            
+          {this.state.currentPage > 1 ? (            
             <a href="#" onClick={() => {  this.setState({currentPage: this.state.currentPage - 1}, 
-                  () => {  this.makeTopLevelSearch(this.state.searchString, this.state.currentPage);})}}>  Previous Page </a> ) : null} 
+                  () => {  this.makeTopLevelSearch(this.state.searchString, this.state.currentPage);})}}>  Previous Page </a> ) :  <a> &nbsp; </a>} 
               <span style={{float:"right"}}>
               {this.state.currentPage < this.state.total_count/5 ? (  <a href="#" onClick={() => {  this.setState({currentPage: this.state.currentPage + 1},     () => {  this.makeTopLevelSearch(this.state.searchString, this.state.currentPage);})}}> Next Page </a> ) : null} 
           </span>
       </p>
       </div>
-
-
-   
         
+      <div style={{paddingLeft: '40%', paddingRight:'20%'}}>
         {this.state.userData.items != null && this.state.searchString !== "" && this.state.userData.items.length> 0 ? (
             <CardList userData={this.state.userData.items} />
         ) : (
@@ -143,6 +145,7 @@ class App extends Component {
              <br />
           </div>
         )}
+        </div>
 
 
       </Fragment>
