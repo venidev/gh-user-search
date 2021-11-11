@@ -1,11 +1,5 @@
-## Github Search Tool ( Work in Progress )
-#### 1)  Features available: Top level search - Search with Name or Email
-
-#### 2)  In Progress
-- Full Detail for User Profile
-- Pagination
-
-![image](https://user-images.githubusercontent.com/3338795/141331645-22fd25be-0185-44e4-9373-323763e13586.png)
+## Github Search Tool
+![image](https://user-images.githubusercontent.com/3338795/141381408-582842a7-be69-4052-b708-c0c15f984553.png)
 
 
 
