@@ -1,4 +1,14 @@
-# Github Search Tool
+## Github Search Tool ( Work in Progress )
+#### 1)  Features available: Top level search - Search with Name or Email
+
+#### 2)  In Progress
+- Full Detail for User Profile
+- Pagination
+
+![image](https://user-images.githubusercontent.com/3338795/141331645-22fd25be-0185-44e4-9373-323763e13586.png)
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
