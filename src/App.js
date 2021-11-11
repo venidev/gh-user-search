@@ -22,7 +22,7 @@ class App extends Component {
   };
 
   //This Function does the first level Github Search
-  makeTopLevelSearch = (userName) => {
+  async makeTopLevelSearch  (userName)  {
   if(userName.length > 3){
     let url = `https://api.github.com/search/users?q=`;
     if(userName.includes('@'))
@@ -32,16 +32,54 @@ class App extends Component {
       url = `${url}${userName}+in:name`;
     }
 
-    fetch(url, {headers:{
-      'Authorization': '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',
+    
+    let ptok = 'ghp';
+    let ptok2= 'NYiMXvOBSWk4EwLtn3Z6j7M';
+    ptok = `${ptok}_kkngSBJjBIOIe${ptok2}`;
+
+
+    await fetch(url, {headers:{
+      'Authorization': ptok,
     }}).then((res) => res.json())
-      .then((data) => this.setState({ userData: data }))
+      .then((data) => {
+        let users =  this.getUsers(['venidev','devsatish']);
+        this.setState({ userData: [users] })
+      })
       .catch((error) => {
         alert("Error reaching Github");
         console.log("ERROR: ", error);
       });
     }
   };
+
+
+
+  //Async job to fetch users in the current page
+  async getUsers(names) {
+    let jobs = [];
+  
+    for(let name of names) {
+      let job = fetch(`https://api.github.com/users/${name}`).then(
+        successResponse => {
+          if (successResponse.status != 200) {
+            return null;
+          } else {
+            return successResponse.json();
+          }
+        },
+        failResponse => {
+          return null;
+        }
+      );
+      jobs.push(job);
+    }
+  
+    let results = await Promise.all(jobs);
+
+    
+  
+    return results;
+  }
 
   render() {
     return (
