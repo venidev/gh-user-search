@@ -1,6 +1,5 @@
+![image](https://user-images.githubusercontent.com/3338795/141331645-22fd25be-0185-44e4-9373-323763e13586.png)
 
-![image](https://user-images.githubusercontent.com/3338795/141331425-513a0809-6483-4894-8af6-13d5bd9a11d3.png)
-****
 
 # Github Search Tool
 
