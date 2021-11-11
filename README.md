@@ -1,6 +1,7 @@
 ## Github Search Tool ( Work in Progress )
-1)  Features available: Top level search
-2) Features in Progrsss: 
+#### 1)  Features available: Top level search - Search with Name or Email
+
+#### 2)  In Progress
 - Full Detail for User Profile
 - Pagination
 
